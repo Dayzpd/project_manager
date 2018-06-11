@@ -31,17 +31,17 @@ class Manager:
         return result
 
     def load_projects(self):
-        with open(Path.cwd().joinpath('resources/projects.json'), 'r') as file:
+        with open('../resources/projects.json' '''Path.cwd().joinpath('resources/projects.json')''', 'r') as file:
             data = json.load(file)
             for project in data:
             	self.projects.append(Project(project['name'], project['repo_link'], project['port']))
 
     def save_projects(self):
-        with open(Path.cwd().joinpath('resources/projects.json'), 'w') as file:
+        with open('../resources/projects.json' '''Path.cwd().joinpath('resources/projects.json')''', 'w') as file:
             json.dump(self.get_projects(), file)
 
     def load_credentials(self):
-        with open(Path.cwd().joinpath('resources/credentials.json'), 'r') as file:
+        with open('../resources/credentials.json' '''Path.cwd().joinpath('resources/credentials.json')''', 'r') as file:
             data = json.load(file)
             for credential in data:
             	self.credentials.append(Credential(credential['user'], credential['password']))

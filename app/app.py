@@ -73,7 +73,7 @@ def shell():
 	-> name
 	-> action
 	'''
-	with open(Path.cwd().joinpath('resources/credentials.json'), 'r') as file:
+	with open('resources/credentials.json' '''Path.cwd().joinpath('resources/credentials.json')''', 'r') as file:
 		data = json.load(file)
 
 	user = data['user']
