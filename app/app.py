@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, render_template, request
 from classes.manager import Manager
 from classes.project import Project
-from classes.shell import Shell
+
 import json
 from pathlib import Path
 app = Flask(__name__)
@@ -66,24 +66,9 @@ def delete():
 			return jsonify({'error': False}) # Project found and deleted.
 	return jsonify({'error': True}) # Project not found.
 
-@app.route('/shell', methods=['POST'])
-def shell():
-	'''
-	Run shell program.
-	-> name
-	-> action
-	'''
-	with open('./resources/credentials.json', 'r') as file:
-		data = json.load(file)
-
-	user = data['user']
-	password = data['password']
-	project = manager.get_projects(name=request.form['name'])
-	Shell.remove(project[0]['name'], user, password)
-	Shell.pull(project[0]['name'], user, password)
-	Shell.build(project[0]['name'], user, password)
-	Shell.run(project[0]['name'], port, user, password)
-	return jsonify({'success': 'maybe'})
+@app.route('/hook', methods=['POST'])
+def hook():
+	print(request.form['payload'])
 
 if __name__ == '__main__':
 	app.run(debug=True)
