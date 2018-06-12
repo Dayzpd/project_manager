@@ -68,7 +68,7 @@ def delete():
 
 @app.route('/hook', methods=['POST'])
 def hook():
-	print(request.form['payload'])
+	print(request.args)
 
 if __name__ == '__main__':
 	app.run(debug=True)
