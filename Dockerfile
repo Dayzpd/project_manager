@@ -6,6 +6,8 @@ RUN pip install -U pip
 RUN pip install uwsgi
 RUN pip install -r /tmp/requirements.txt
 
+USER www-data
+
 COPY ./app /app
 ENV HOME /app
 WORKDIR /app
