@@ -6,12 +6,10 @@ RUN pip install -U pip
 RUN pip install uwsgi
 RUN pip install -r /tmp/requirements.txt
 
-USER www-data
-
 COPY ./app /app
 ENV HOME /app
 WORKDIR /app
 
 EXPOSE 80
 
-ENTRYPOINT ["uwsgi", "--http", "0.0.0.0:80", "--module", "app:app"]
+ENTRYPOINT ["uwsgi", "--http", "0.0.0.0:80", "--uid", "www-data", "--gid", "www-data" "--module", "app:app"]
