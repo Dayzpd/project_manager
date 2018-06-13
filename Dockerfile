@@ -12,4 +12,4 @@ WORKDIR /app
 
 EXPOSE 80
 
-ENTRYPOINT ["uwsgi", "--http", "0.0.0.0:80", "--uid", "www-data", "--gid", "www-data" "--module", "app:app"]
+ENTRYPOINT ["uwsgi", "--http", "0.0.0.0:80", "--module", "wsgi"]
